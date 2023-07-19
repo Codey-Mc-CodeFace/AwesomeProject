@@ -15,9 +15,9 @@ struct ImmovableObject{
     ImmovableObject( ImmovableObject const& ) = default;
 };
 
-void f( UnstoppableForce ) {}
-void f( ImmovableObject ) {}
-void g( UnstoppableForce const& ) {}
+void f( UnstoppableForce ) { /* ... */ }
+void f( ImmovableObject ) { /* ... */ }
+void g( UnstoppableForce const& ) { /* ... */ }
 
 
 void what_happens_when_an_unstoppable_force_meets_an_immovable_object() {

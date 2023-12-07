@@ -17,14 +17,14 @@ struct ImmovableObject{
 
 void f( UnstoppableForce ) { /* ... */ }
 void f( ImmovableObject ) { /* ... */ }
-void g( UnstoppableForce const& ) { /* ... */ }
+void h( UnstoppableForce const& ) { /* ... */ }
 
 
 void what_happens_when_an_unstoppable_force_meets_an_immovable_object() {
     UnstoppableForce unstoppable;
 
     f( std::move( unstoppable ) );
-    g( std::move( unstoppable ) );
+    h( std::move( unstoppable ) );
 
     ImmovableObject immovable;
 

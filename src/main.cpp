@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 void use_wrapper();
 bool token_exists( std::string const& to_find );
@@ -25,6 +26,8 @@ int use_A_and_B() {
 }
 
 int main() {
+    std::cout << "Hello, SonarWorld\n";
+
     int result = use_A_and_B();
     use_wrapper();
     token_exists("hello");

@@ -37,22 +37,36 @@ void what_happens_when_an_unstoppable_force_meets_an_immovable_object() {
 
 
 
-class Base {
-public:
+
+
+
+
+
+
+
+
+
+struct Base {
+    int a;
     template<typename T>
-    explicit Base( T&& a ) {}
+    explicit Base( T&& a ) : a( std::forward<T>( a ) ){}
 };
 
 
 template<typename T>
 class A : public Base {
 public:
-    explicit A( T&& a ) : Base{ std::move(a) } {}
+    explicit A( T&& a ) : Base( std::move(a) ) {}
 };
 
 
 class B : public Base {
 public:
     template<typename T>
-    explicit B( T&& a ) : Base{ std::move(a) } {}
+    explicit B( T&& a ) : Base( std::move(a) ) {}
 };
+
+
+
+
+

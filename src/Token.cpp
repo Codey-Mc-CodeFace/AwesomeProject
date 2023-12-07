@@ -10,22 +10,16 @@ struct Token {
     friend auto operator<=>(const Token& lhs, const Token& rhs) = default;
 };
 
-std::vector<std::string> const tokens {
+std::vector<std::string> const raw_tokens {
         "const", "mutable", "volatile", "if", "for", "while", "switch", "do",
         "bool", "char", "short", "int", "long", "unsigned", "float", "double",
         "<", ">", "<=", ">=", "==", "!=", "||", "&&", "!",
         "+", "-", "*", "/", "%", "=", "+=", "-=", "*=", "/=", "%=",
         // much more
 };
+std::set<Token, std::less<>> const tokens( raw_tokens.begin(), raw_tokens.end() );
 
-void use_tokens() {
-    const std::string to_find = "non-existent";
-
-    std::set<Token> non_heterogeneous( tokens.begin(), tokens.end() );
-    std::set<Token, std::less<>> heterogeneous( tokens.begin(), tokens.end() );
-
-    // Which of the following is more efficient, and why?
-
-    /* ... */ (void)non_heterogeneous.find( to_find ); // a
-    /* ... */ (void)heterogeneous.find( to_find ); // b
+bool token_exists( std::string const& to_find ) {
+    auto it = tokens.find( to_find );
+    return it == tokens.end();
 }

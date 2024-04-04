@@ -33,7 +33,7 @@ int main() {
     token_exists("hello");
 
     int i = 7;
-    add_one(&i);
+//    add_one(&i);
 
     std::string s;
     get_size(s);
